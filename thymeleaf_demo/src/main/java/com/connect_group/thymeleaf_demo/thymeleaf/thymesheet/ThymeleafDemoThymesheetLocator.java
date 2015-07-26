@@ -1,7 +1,9 @@
 package com.connect_group.thymeleaf_demo.thymeleaf.thymesheet;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +21,7 @@ public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implem
 	private static final Logger log = Logger.getLogger(ThymeleafDemoThymesheetLocator.class);
 
 	private ServletContext servletContext;
-	private static final String PATH_PREFIX = "/WEB-INF/templates/";
+	private static final String PATH_PREFIX = "templates/";
 	private static final String DEFAULT_SUFFIX = ".tss";
 	
 	private final Set<String> thymesheetSuffixes = new HashSet<String>();
@@ -81,7 +83,14 @@ public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implem
 			log.info("getThymesheetPaths - folder path is: " + folderPath);
 		}
 		
-		Set<String> folderContents = servletContext.getResourcePaths(PATH_PREFIX + folderPath);
+		HashSet<String> folderContents = new HashSet<String>();
+		try {
+			URL url = servletContext.getClass().getClassLoader().getResource(PATH_PREFIX + folderPath);
+			String[] files = new File(url.toURI()).list();
+			folderContents.addAll(Arrays.asList(files));
+		} catch (Exception ex) {
+			log.error("Exception while reading folder contents", ex);
+		}
 		return filterThymesheetPaths(folderContents);
 	}
 	
@@ -101,7 +110,7 @@ public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implem
 				}
 				
 				if (isPathWithThymesheetSuffix(filePath)) {
-					thymesheetPaths.add(filePath);
+					thymesheetPaths.add("classpath:/" + PATH_PREFIX + filePath);
 				}
 			}
 		}
