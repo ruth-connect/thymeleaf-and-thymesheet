@@ -52,7 +52,7 @@
 			
 			<div class="slide">
 				<h1>What is Thymeleaf?</h1>
-				<ul>
+				<ul class="incremental">
 					<li>Java-based and Open Source</li>
 					<li>XML / XHTML / HTML5 template engine (extensible to other formats)</li>
 					<li>Can replace JSP as view layer</li>
@@ -66,7 +66,7 @@
 			
 			<div class="slide">
 				<h1>What is Thymesheet?</h1>
-				<ul>
+				<ul class="incremental">
 					<li>Thymesheet is an Open Source extension to Thymeleaf</li>
 					<li>Thymesheet uses a separate .tss file (using CSS3-based syntax)</li>
 					<li>HTML does not need to be modified - all mappings can be made in the .tss file</li>
@@ -115,7 +115,8 @@
 					<li>Thymesheet needs some additional configuration before it will work</li>
 					<li>In particular, we need to tell Spring that we are using Thymesheet as well as Thymeleaf, and where the application should look for the
 					Thymesheet .tss files</li>
-					<li>
+					<li>The configuration to do this is in the <b>com.connect_group.thymeleaf_demo.config</b> package (and sub packages) - please feel free to
+					steal and cannibalise to meet your needs</li>
 				</ul>
 			</div>
 			
@@ -139,7 +140,7 @@
 			
 			<div class="slide">
 				<h1>Hamcrest Matchers</h1>
-				<ul>
+				<ul class="incremental">
 					<li><b>Exists</b> - checks if an element exists (does not matter if once or more than once)</li>
 					<li><b>HasAttribute</b> - checks if an element has a particular attribute</li>
 					<li><b>HasChildren</b> - checks if an element has child elements</li>
@@ -153,7 +154,7 @@
 			
 			<div class="slide">
 				<h1>Hamcrest Matchers</h1>
-				<ul>
+				<ul class="incremental">
 					<li><b>HasTextInOrder</b> - checks if an element contains text in a particular order</li>
 					<li><b>IsSingleElementThat</b> - checks if an element only occurs once, and matches a Hamcrest matcher nested inside it</li>
 					<li><b>OccursOnce</b> - checks if an element only occurs once</li>
