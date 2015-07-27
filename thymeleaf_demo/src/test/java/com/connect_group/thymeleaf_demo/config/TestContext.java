@@ -20,7 +20,7 @@ public class TestContext extends WebMvcConfigurerAdapter {
     
     @Bean
     public ServletContext servletContext() {
-    	MockServletContext context = new MockServletContext("src/main/webapp", new FileSystemResourceLoader());
+    	MockServletContext context = new MockServletContext("", new FileSystemResourceLoader());
     	return context;
     }
 }

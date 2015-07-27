@@ -11,11 +11,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.templatemode.ITemplateModeHandler;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.connect_group.thymeleaf.testing.ThymeleafTestEngine;
 import com.connect_group.thymeleaf_demo.thymeleaf.dialect.ThymeleafDemoDialect;
+import com.connect_group.thymeleaf_demo.thymesheet.ThymeleafDemoTestTemplateModeHandler;
 
 @Configuration
 public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
@@ -33,6 +35,12 @@ public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
 		
 		ThymeleafTestEngine engine = new ThymeleafTestEngine();
 		
+		Set<ITemplateModeHandler> templateModeHandlers = new HashSet<>();
+		ThymeleafDemoTestTemplateModeHandler templateModeHandler = new ThymeleafDemoTestTemplateModeHandler();
+		templateModeHandler.setServletContext(servletContext);
+		templateModeHandlers.add(templateModeHandler);
+		engine.setTemplateModeHandlers(templateModeHandlers);
+
 		Set<ITemplateResolver> templateResolvers = new HashSet<>();
 		templateResolvers.add(templateResolver());
 		templateResolvers.add(fileTemplateResolver());
@@ -51,7 +59,7 @@ public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
 	private FileTemplateResolver fileTemplateResolver() {
 		FileTemplateResolver resolver = new FileTemplateResolver();
 		resolver.setCharacterEncoding("UTF-8");
-		resolver.setTemplateMode("LEGACYHTML5");
+		resolver.setTemplateMode("HTML5");
 		resolver.setCacheable(false);
 		resolver.setOrder(2);
 		return resolver;

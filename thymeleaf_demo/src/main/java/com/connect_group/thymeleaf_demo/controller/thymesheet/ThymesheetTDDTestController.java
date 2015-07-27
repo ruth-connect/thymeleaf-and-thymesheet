@@ -25,7 +25,7 @@ public class ThymesheetTDDTestController {
 	private List<CarMake> getCarMakes() {
 		List<CarMake> carMakes = new ArrayList<>();
 		
-		CarMake jaguar = new CarMake("jaguar");
+		CarMake jaguar = new CarMake("Jaguar");
 		List<CarModel> jaguarModels = new ArrayList<>();
 		jaguarModels.add(new CarModel("XE"));
 		jaguarModels.add(new CarModel("XF"));

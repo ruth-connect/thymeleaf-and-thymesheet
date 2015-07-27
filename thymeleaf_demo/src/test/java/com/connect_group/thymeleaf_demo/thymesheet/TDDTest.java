@@ -23,6 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.connect_group.thymeleaf.testing.ThymeleafTestEngine;
 import com.connect_group.thymeleaf_demo.beans.CarMake;
+import com.connect_group.thymeleaf_demo.beans.CarModel;
 import com.connect_group.thymeleaf_demo.config.TestContext;
 import com.connect_group.thymesheet.css.selectors.NodeSelectorException;
 import com.connect_group.thymesheet.query.HtmlElements;
@@ -80,6 +81,46 @@ public class TDDTest {
 		assertThat(tags.matching("ul.car-makes > li > h2"), isSingleElementThat(hasOnlyText("Jaguar")));
 	}
 	
+	@Test
+	public void shouldOutputNoUlTagForCarModels_WhenListOfCarModelsIsEmpty() throws NodeSelectorException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("carMakes", getOneCarMakeWithNoModels());
+		HtmlElements tags = selectorEngine.process(HTML_PATH, model);
+		assertThat(tags.matching("ul.car-models"), not(exists()));
+	}
+	
+	@Test
+	public void shouldOutputUlTagForCarModels_WhenListOfCarModelsContainsOneCarModel() throws NodeSelectorException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("carMakes", getOneCarMakeWithOneModel());
+		HtmlElements tags = selectorEngine.process(HTML_PATH, model);
+		assertThat(tags.matching("ul.car-models"), occursOnce());
+	}
+	
+	@Test
+	public void shouldOutputOneCarModel_WhenListOfCarModelsContainsOneCarModel() throws NodeSelectorException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("carMakes", getOneCarMakeWithOneModel());
+		HtmlElements tags = selectorEngine.process(HTML_PATH, model);
+		assertThat(tags.matching("ul.car-models > li"), occursOnce());
+	}
+	
+	@Test
+	public void shouldOutputTwoCarModels_WhenListOfCarModelsContainsTwoCarModels() throws NodeSelectorException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("carMakes", getOneCarMakeWithTwoModels());
+		HtmlElements tags = selectorEngine.process(HTML_PATH, model);
+		assertThat(tags.matching("ul.car-models > li"), hasSize(2));
+	}
+	
+	@Test
+	public void shouldOutputCarModelName_WhenCarModelNameIsSet() throws NodeSelectorException {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("carMakes", getOneCarMakeWithOneModel());
+		HtmlElements tags = selectorEngine.process(HTML_PATH, model);
+		assertThat(tags.matching("ul.car-models > li"), isSingleElementThat(hasOnlyText("XE")));
+	}
+	
 	private List<CarMake> getOneCarMakeWithNoModels() {
 		return Collections.singletonList(new CarMake("Jaguar"));
 	}
@@ -89,5 +130,22 @@ public class TDDTest {
 		carMakes.add(new CarMake("jaguar"));
 		carMakes.add(new CarMake("Land Rover"));
 		return carMakes;
+	}
+	
+	private List<CarMake> getOneCarMakeWithOneModel() {
+		CarMake jaguar = new CarMake("Jaguar");
+		List<CarModel> jaguarModels = new ArrayList<>();
+		jaguarModels.add(new CarModel("XE"));
+		jaguar.setModels(jaguarModels);
+		return Collections.singletonList(jaguar);
+	}
+	
+	private List<CarMake> getOneCarMakeWithTwoModels() {
+		CarMake jaguar = new CarMake("Jaguar");
+		List<CarModel> jaguarModels = new ArrayList<>();
+		jaguarModels.add(new CarModel("XE"));
+		jaguarModels.add(new CarModel("XF"));
+		jaguar.setModels(jaguarModels);
+		return Collections.singletonList(jaguar);
 	}
 }
