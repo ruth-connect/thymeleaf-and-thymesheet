@@ -112,29 +112,40 @@
 			<div class="slide">
 				<h1>Setting Up Thymesheet</h1>
 				<ul>
-					<li>Thymesheet needs some additional configuration before it will work</li>
+					<li>Thymesheet needs some additional configuration before it will work with Spring Boot</li>
 					<li>In particular, we need to tell Spring that we are using Thymesheet as well as Thymeleaf, and where the application should look for the
 					Thymesheet .tss files</li>
-					<li>The configuration to do this is in the <b>com.connect_group.thymeleaf_demo.config</b> package (and sub packages) - please feel free to
-					steal and cannibalise to meet your needs</li>
+					<li>Example configuration to do this is in the <b>com.connect_group.thymeleaf_demo.config</b> package (and sub packages) under <b>src/main/java</b> -
+					please feel free to steal and cannibalise to meet your needs</li>
 				</ul>
 			</div>
 			
 			<div class="slide">
 				<h1>Testing your mappings using TDD</h1>
-				<ul>
-					<li>One big advantage is that you can test your mappings using TDD</li>
-					<li>A unit testing library is available that uses JUnit and Hamcrest:<br/><br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
-		  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.connect-group&lt;/groupId&gt;<br/>
-		  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;thymeleaf-tdd&lt;/artifactId&gt;<br/>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.4&lt;/version&gt;<br/>
-	 	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;scope&gt;test&lt;/scope&gt;<br/>
-	  					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;<br/>
-	  					&nbsp;
-					</li>
+				<ul class="incremental">
+					<li>One big advantage of Thymeleaf and Thymesheet is that you can test your mappings using TDD</li>
+					<li>A unit testing library is available that uses JUnit and Hamcrest</li>
+					<li>You should write tests for every substitution that you make in the HTML using Thymeleaf or Thymesheet</li>
+					<li>If the HTML is changed, you should then be alerted, as one or more of your tests should fail</li>
 					<li>Several new Hamcrest matchers have been added to make it easy to write asserts</li>
 					<li>You can also extend the framework by writing your own Hamcrest matchers</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Setting Up Thymeleaf TDD Framework</h1>
+				<ul>
+					<li>Add the following dependency to your POM:
+							<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
+			  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.connect-group&lt;/groupId&gt;<br/>
+			  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;thymeleaf-tdd&lt;/artifactId&gt;<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.4&lt;/version&gt;<br/>
+		 	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;scope&gt;test&lt;/scope&gt;<br/>
+		  					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;</p>
+					</li>
+					<li>The TDD framework also needs some additional configuration before it will work with Thymesheet and Spring Boot</li>
+					<li>Example configuration to do this is in the <b>com.connect_group.thymeleaf_demo.config</b> package (and sub packages) under <b>src/test/java</b> -
+					again, please feel free to steal and cannibalise</li>
 				</ul>
 			</div>
 			
@@ -146,15 +157,15 @@
 					<li><b>HasChildren</b> - checks if an element has child elements</li>
 					<li><b>HasClass</b> - checks if an element has a particular CSS class</li>
 					<li><b>HasComment</b> - checks if an element has an HTML comment within it</li>
-					<li><b>HasOnlyText</b> - checks if an element contains only text (so no child elements as well)</li>
-					<li><b>HasTextAfterElement</b> - checks if an element contains text after a child element</li>
-					<li><b>HasTextBeforeElement</b> - checks if an element contains text before a child element</li>
 				</ul>
 			</div>
 			
 			<div class="slide">
 				<h1>Hamcrest Matchers</h1>
 				<ul class="incremental">
+					<li><b>HasOnlyText</b> - checks if an element contains only text (so no child elements as well)</li>
+					<li><b>HasTextAfterElement</b> - checks if an element contains text after a child element</li>
+					<li><b>HasTextBeforeElement</b> - checks if an element contains text before a child element</li>
 					<li><b>HasTextInOrder</b> - checks if an element contains text in a particular order</li>
 					<li><b>IsSingleElementThat</b> - checks if an element only occurs once, and matches a Hamcrest matcher nested inside it</li>
 					<li><b>OccursOnce</b> - checks if an element only occurs once</li>
