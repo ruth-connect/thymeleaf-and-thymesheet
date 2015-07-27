@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymesheet;
+package com.connect_group.thymeleaf_demo.config.thymesheet;
 
 import java.util.Set;
 
@@ -9,20 +9,20 @@ import org.springframework.web.context.ServletContextAware;
 import org.thymeleaf.templateparser.html.LegacyHtml5TemplateParser;
 import org.thymeleaf.templatewriter.XhtmlHtml5TemplateWriter;
 
-import com.connect_group.thymeleaf_demo.thymeleaf.thymesheet.ThymeleafDemoTemplateModeHandler;
+import com.connect_group.thymeleaf_demo.config.thymesheet.SpringBootThymesheetTemplateModeHandler;
 import com.connect_group.thymesheet.templatemode.ThymesheetTemplateModeHandler;
 
-public class ThymeleafDemoTestTemplateModeHandler extends ThymesheetTemplateModeHandler implements ServletContextAware {
+public class SpringBootTestTemplateModeHandler extends ThymesheetTemplateModeHandler implements ServletContextAware {
 
-	private static final Logger log = Logger.getLogger(ThymeleafDemoTemplateModeHandler.class);
+	private static final Logger log = Logger.getLogger(SpringBootThymesheetTemplateModeHandler.class);
 	private static final String TEMPLATE_MODE_NAME = "HTML5";
 	private static final int MAX_PARSERS_POOL_SIZE = 24;
 	
-	private final ThymeleafDemoTestThymesheetLocator thymeleafDemoTestThymesheetLocator;
+	private final SpringBootTestThymesheetLocator thymeleafDemoTestThymesheetLocator;
 	
-	public ThymeleafDemoTestTemplateModeHandler() {
-		super(TEMPLATE_MODE_NAME, new LegacyHtml5TemplateParser("HTML5", getPoolSize()), new XhtmlHtml5TemplateWriter(), new ThymeleafDemoTestThymesheetLocator());
-		this.thymeleafDemoTestThymesheetLocator = (ThymeleafDemoTestThymesheetLocator)thymesheetLocator;
+	public SpringBootTestTemplateModeHandler() {
+		super(TEMPLATE_MODE_NAME, new LegacyHtml5TemplateParser("HTML5", getPoolSize()), new XhtmlHtml5TemplateWriter(), new SpringBootTestThymesheetLocator());
+		this.thymeleafDemoTestThymesheetLocator = (SpringBootTestThymesheetLocator)thymesheetLocator;
 		
 		if (log.isInfoEnabled()) {
 			log.info("ThymeleafDemoTemplateModeHandler constructor invoked");

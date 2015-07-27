@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymeleaf.dialect;
+package com.connect_group.thymeleaf_demo.config.thymeleaf;
 
 import org.thymeleaf.dialect.AbstractDialect;
 

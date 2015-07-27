@@ -16,16 +16,16 @@ import org.thymeleaf.templateresolver.FileTemplateResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.connect_group.thymeleaf.testing.ThymeleafTestEngine;
-import com.connect_group.thymeleaf_demo.thymeleaf.dialect.ThymeleafDemoDialect;
-import com.connect_group.thymeleaf_demo.thymesheet.ThymeleafDemoTestTemplateModeHandler;
+import com.connect_group.thymeleaf_demo.config.thymeleaf.ThymeleafDemoDialect;
+import com.connect_group.thymeleaf_demo.config.thymesheet.SpringBootTestTemplateModeHandler;
 
 @Configuration
-public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
+public class SpringBootTestThymesheetConfig extends SpringBootThymesheetConfig {
 	
 	@Autowired ServletContext servletContext;
 	@Autowired ApplicationContext applicationContext;
 	
-	private static final Logger log = Logger.getLogger(ThymeleafDemoTestConfig.class);
+	private static final Logger log = Logger.getLogger(SpringBootTestThymesheetConfig.class);
 	
 	@Bean
 	public ThymeleafTestEngine selectorEngine() {
@@ -36,7 +36,7 @@ public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
 		ThymeleafTestEngine engine = new ThymeleafTestEngine();
 		
 		Set<ITemplateModeHandler> templateModeHandlers = new HashSet<>();
-		ThymeleafDemoTestTemplateModeHandler templateModeHandler = new ThymeleafDemoTestTemplateModeHandler();
+		SpringBootTestTemplateModeHandler templateModeHandler = new SpringBootTestTemplateModeHandler();
 		templateModeHandler.setServletContext(servletContext);
 		templateModeHandlers.add(templateModeHandler);
 		engine.setTemplateModeHandlers(templateModeHandlers);
@@ -58,6 +58,7 @@ public class ThymeleafDemoTestConfig extends ThymeleafDemoConfig {
 		
 	private FileTemplateResolver fileTemplateResolver() {
 		FileTemplateResolver resolver = new FileTemplateResolver();
+		resolver.setPrefix("src/main/resources/templates/");
 		resolver.setCharacterEncoding("UTF-8");
 		resolver.setTemplateMode("HTML5");
 		resolver.setCacheable(false);

@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymeleaf.thymesheet;
+package com.connect_group.thymeleaf_demo.config.thymesheet;
 
 import java.util.Set;
 
@@ -11,17 +11,17 @@ import org.thymeleaf.templatewriter.XhtmlHtml5TemplateWriter;
 
 import com.connect_group.thymesheet.templatemode.ThymesheetTemplateModeHandler;
 
-public class ThymeleafDemoTemplateModeHandler extends ThymesheetTemplateModeHandler implements ServletContextAware {
+public class SpringBootThymesheetTemplateModeHandler extends ThymesheetTemplateModeHandler implements ServletContextAware {
 
-	private static final Logger log = Logger.getLogger(ThymeleafDemoTemplateModeHandler.class);
+	private static final Logger log = Logger.getLogger(SpringBootThymesheetTemplateModeHandler.class);
 	private static final String TEMPLATE_MODE_NAME = "HTML5";
 	private static final int MAX_PARSERS_POOL_SIZE = 24;
 	
-	private final ThymeleafDemoThymesheetLocator thymeleafDemoThymesheetLocator;
+	private final SpringBootThymesheetLocator thymeleafDemoThymesheetLocator;
 	
-	public ThymeleafDemoTemplateModeHandler() {
-		super(TEMPLATE_MODE_NAME, new LegacyHtml5TemplateParser("HTML5", getPoolSize()), new XhtmlHtml5TemplateWriter(), new ThymeleafDemoThymesheetLocator());
-		this.thymeleafDemoThymesheetLocator = (ThymeleafDemoThymesheetLocator)thymesheetLocator;
+	public SpringBootThymesheetTemplateModeHandler() {
+		super(TEMPLATE_MODE_NAME, new LegacyHtml5TemplateParser("HTML5", getPoolSize()), new XhtmlHtml5TemplateWriter(), new SpringBootThymesheetLocator());
+		this.thymeleafDemoThymesheetLocator = (SpringBootThymesheetLocator)thymesheetLocator;
 		
 		if (log.isInfoEnabled()) {
 			log.info("ThymeleafDemoTemplateModeHandler constructor invoked");

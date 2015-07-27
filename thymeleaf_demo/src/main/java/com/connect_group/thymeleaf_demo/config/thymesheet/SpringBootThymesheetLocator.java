@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymeleaf.thymesheet;
+package com.connect_group.thymeleaf_demo.config.thymesheet;
 
 import java.io.File;
 import java.net.URL;
@@ -16,9 +16,9 @@ import org.thymeleaf.dom.Document;
 import com.connect_group.thymesheet.ThymesheetLocator;
 import com.connect_group.thymesheet.impl.HtmlThymesheetLocator;
 
-public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implements ThymesheetLocator {
+public class SpringBootThymesheetLocator extends HtmlThymesheetLocator implements ThymesheetLocator {
 
-	private static final Logger log = Logger.getLogger(ThymeleafDemoThymesheetLocator.class);
+	private static final Logger log = Logger.getLogger(SpringBootThymesheetLocator.class);
 
 	private ServletContext servletContext;
 	private static final String PATH_PREFIX = "templates/";

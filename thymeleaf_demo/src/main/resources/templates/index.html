@@ -78,11 +78,105 @@
 			</div>
 			
 			<div class="slide">
+				<h1>Setting up Thymeleaf</h1>
+				<ul>
+					<li>Quickest way to get up and running is to use <a href="http://projects.spring.io/spring-boot/" target="_blank">Spring Boot</a></li>
+					<li>Configure and download a new Maven project using <a href="http://start.spring.io/" target="_blank">Spring Initializr</a>, making sure that
+					you tick the Thymeleaf box, which will include all the necessary Thymeleaf dependencies</li>
+					<li>You will need to add your Thymeleaf templates under the <b>src/main/resources/templates</b> folder in your application</li>
+					<li>e.g. if your controller returns a view of "index", then you will need to create a Thymeleaf template called index.html directly within your
+					templates folder</li>
+					<li>Your application will fail to start up unless you create at least one Thymeleaf template under the templates folder</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Setting Up Thymesheet</h1>
+				<ul>
+					<li>If you are using Spring Boot, and have created a project using <a href="http://start.spring.io/" target="_blank">Spring Initializr</a> where you have
+					ticked the Thymeleaf box, add the following dependencies to your POM:<br/><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
+        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.connect-group&lt;/groupId&gt;<br/>
+        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;thymesheet-spring4&lt;/artifactId&gt;<br/>
+        				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;2.1.2&lt;/version&gt;<br/>
+    					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;<br/><br/>
+    					&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
+					  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;net.sourceforge.nekohtml&lt;/groupId&gt;<br/>
+					  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;nekohtml&lt;/artifactId&gt;<br/>
+					  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.9.18&lt;/version&gt;<br/>
+					  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;&nbsp;
+ 					</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Setting Up Thymesheet</h1>
+				<ul>
+					<li>Thymesheet needs some additional configuration before it will work</li>
+					<li>In particular, we need to tell Spring that we are using Thymesheet as well as Thymeleaf, and where the application should look for the
+					Thymesheet .tss files</li>
+					<li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Testing your mappings using TDD</h1>
+				<ul>
+					<li>One big advantage is that you can test your mappings using TDD</li>
+					<li>A unit testing library is available that uses JUnit and Hamcrest:<br/><br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&lt;dependency&gt;<br/>
+		  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;groupId&gt;com.connect-group&lt;/groupId&gt;<br/>
+		  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;artifactId&gt;thymeleaf-tdd&lt;/artifactId&gt;<br/>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;version&gt;1.0.4&lt;/version&gt;<br/>
+	 	  				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;scope&gt;test&lt;/scope&gt;<br/>
+	  					&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dependency&gt;<br/>
+	  					&nbsp;
+					</li>
+					<li>Several new Hamcrest matchers have been added to make it easy to write asserts</li>
+					<li>You can also extend the framework by writing your own Hamcrest matchers</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Hamcrest Matchers</h1>
+				<ul>
+					<li><b>Exists</b> - checks if an element exists (does not matter if once or more than once)</li>
+					<li><b>HasAttribute</b> - checks if an element has a particular attribute</li>
+					<li><b>HasChildren</b> - checks if an element has child elements</li>
+					<li><b>HasClass</b> - checks if an element has a particular CSS class</li>
+					<li><b>HasComment</b> - checks if an element has an HTML comment within it</li>
+					<li><b>HasOnlyText</b> - checks if an element contains only text (so no child elements as well)</li>
+					<li><b>HasTextAfterElement</b> - checks if an element contains text after a child element</li>
+					<li><b>HasTextBeforeElement</b> - checks if an element contains text before a child element</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Hamcrest Matchers</h1>
+				<ul>
+					<li><b>HasTextInOrder</b> - checks if an element contains text in a particular order</li>
+					<li><b>IsSingleElementThat</b> - checks if an element only occurs once, and matches a Hamcrest matcher nested inside it</li>
+					<li><b>OccursOnce</b> - checks if an element only occurs once</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Demo - Thymeleaf</h1>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Demo - Thymesheet</h1>
+			</div>
+			
+			<div class="slide">
 				<h1>Further Resources</h1>
 				<ul>
 					<li>Thymeleaf - <a href="http://www.thymeleaf.org/" target="_blank">http://www.thymeleaf.org/</a></li>
 					<li>Thymesheet - <a href="https://github.com/connect-group/thymesheet" target="_blank">https://github.com/connect-group/thymesheet</a></li>
 					<li>Spring Boot - <a href="http://projects.spring.io/spring-boot/" target="_blank">http://projects.spring.io/spring-boot/</a></li>
+					<li>Spring Initializr - <a href="http://start.spring.io/" target="_blank">http://start.spring.io/</a></li>
+					<li>Connect Group - <a href="http://www.connect-group.com/" target="_blank">http://www.connect-group.com/</a></li>
+					<li>S5 - A Simple Standards-Based Slide Show System - <a href="http://meyerweb.com/eric/tools/s5/" target="_blank">http://meyerweb.com/eric/tools/s5/</a></li>
 				</ul>
 			</div>
 				

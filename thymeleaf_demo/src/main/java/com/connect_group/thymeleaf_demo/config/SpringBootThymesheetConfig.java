@@ -12,12 +12,12 @@ import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.templatemode.ITemplateModeHandler;
 
-import com.connect_group.thymeleaf_demo.thymeleaf.dialect.ThymeleafDemoDialect;
-import com.connect_group.thymeleaf_demo.thymeleaf.thymesheet.ThymeleafDemoTemplateModeHandler;
+import com.connect_group.thymeleaf_demo.config.thymeleaf.ThymeleafDemoDialect;
+import com.connect_group.thymeleaf_demo.config.thymesheet.SpringBootThymesheetTemplateModeHandler;
 import com.connect_group.thymesheet.spring4.SpringThymesheetTemplateEngine;
 
 @Configuration
-public class ThymeleafDemoConfig {
+public class SpringBootThymesheetConfig {
 
 	@Autowired
 	private ServletContext servletContext;
@@ -38,7 +38,7 @@ public class ThymeleafDemoConfig {
 		SpringThymesheetTemplateEngine templateEngine = new SpringThymesheetTemplateEngine();
 		
 		Set<ITemplateModeHandler> templateModeHandlers = new HashSet<>();
-		ThymeleafDemoTemplateModeHandler templateModeHandler = new ThymeleafDemoTemplateModeHandler();
+		SpringBootThymesheetTemplateModeHandler templateModeHandler = new SpringBootThymesheetTemplateModeHandler();
 		templateModeHandler.setServletContext(servletContext);
 		templateModeHandlers.add(templateModeHandler);
 		templateEngine.setTemplateModeHandlers(templateModeHandlers);

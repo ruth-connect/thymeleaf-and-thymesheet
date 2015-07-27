@@ -24,15 +24,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.connect_group.thymeleaf.testing.ThymeleafTestEngine;
 import com.connect_group.thymeleaf_demo.beans.CarMake;
 import com.connect_group.thymeleaf_demo.beans.CarModel;
-import com.connect_group.thymeleaf_demo.config.TestContext;
+import com.connect_group.thymeleaf_demo.config.SpringBootTestThymesheetContext;
 import com.connect_group.thymesheet.css.selectors.NodeSelectorException;
 import com.connect_group.thymesheet.query.HtmlElements;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = TestContext.class)
+@SpringApplicationConfiguration(classes = SpringBootTestThymesheetContext.class)
 public class TDDTest {
 	
-	private static final String HTML_PATH = "src/main/resources/templates/thymesheet/tddTest.html";
+	private static final String HTML_PATH = "thymesheet/tddTest.html";
 
 	@Autowired
 	private ThymeleafTestEngine selectorEngine;

@@ -12,15 +12,15 @@ import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration 
-@Import({ThymeleafDemoTestConfig.class})
-public class TestContext extends WebMvcConfigurerAdapter {
+@Import({SpringBootTestThymesheetConfig.class})
+public class SpringBootTestThymesheetContext extends WebMvcConfigurerAdapter {
 	
     @Autowired
     StandardEnvironment environment;
     
     @Bean
     public ServletContext servletContext() {
-    	MockServletContext context = new MockServletContext("", new FileSystemResourceLoader());
+    	MockServletContext context = new MockServletContext("src/main/resources/templates/", new FileSystemResourceLoader());
     	return context;
     }
 }

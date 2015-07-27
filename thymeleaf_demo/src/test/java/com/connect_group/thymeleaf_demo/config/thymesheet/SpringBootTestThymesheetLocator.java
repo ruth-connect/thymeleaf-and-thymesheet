@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymesheet;
+package com.connect_group.thymeleaf_demo.config.thymesheet;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -10,14 +10,14 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.thymeleaf.dom.Document;
 
-import com.connect_group.thymeleaf_demo.thymeleaf.thymesheet.ThymeleafDemoThymesheetLocator;
 import com.connect_group.thymesheet.ThymesheetLocator;
 import com.connect_group.thymesheet.impl.HtmlThymesheetLocator;
 
-public class ThymeleafDemoTestThymesheetLocator extends HtmlThymesheetLocator implements ThymesheetLocator {
+public class SpringBootTestThymesheetLocator extends HtmlThymesheetLocator implements ThymesheetLocator {
 
-	private static final Logger log = Logger.getLogger(ThymeleafDemoThymesheetLocator.class);
+	private static final Logger log = Logger.getLogger(SpringBootTestThymesheetLocator.class);
 
+	private static final String DEFAULT_PREFIX = "src/main/resources/templates/";
 	private static final String DEFAULT_SUFFIX = ".tss";
 	
 	private final Set<String> thymesheetSuffixes = new HashSet<String>();
@@ -77,7 +77,7 @@ public class ThymeleafDemoTestThymesheetLocator extends HtmlThymesheetLocator im
 		
 		HashSet<String> folderContents = new HashSet<String>();
 		try {
-			String[] files = new File(folderPath).list();
+			String[] files = new File(DEFAULT_PREFIX + folderPath).list();
 			folderContents.addAll(Arrays.asList(files));
 		} catch (Exception ex) {
 			log.error("Exception while reading folder contents", ex);
