@@ -91,10 +91,10 @@ public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implem
 		} catch (Exception ex) {
 			log.error("Exception while reading folder contents", ex);
 		}
-		return filterThymesheetPaths(folderContents);
+		return filterThymesheetPaths(folderPath, folderContents);
 	}
 	
-	private List<String> filterThymesheetPaths(Set<String> folderContents) {
+	private List<String> filterThymesheetPaths(String folderPath, Set<String> folderContents) {
 		List<String> thymesheetPaths = new ArrayList<String>();
 		
 		if (log.isInfoEnabled()) {
@@ -110,7 +110,7 @@ public class ThymeleafDemoThymesheetLocator extends HtmlThymesheetLocator implem
 				}
 				
 				if (isPathWithThymesheetSuffix(filePath)) {
-					thymesheetPaths.add("classpath:/" + PATH_PREFIX + filePath);
+					thymesheetPaths.add("classpath:/" + PATH_PREFIX + folderPath + "/" + filePath);
 				}
 			}
 		}

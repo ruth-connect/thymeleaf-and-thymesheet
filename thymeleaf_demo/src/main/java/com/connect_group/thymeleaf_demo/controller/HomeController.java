@@ -10,7 +10,7 @@ public class HomeController {
 	private static final Logger log = Logger.getLogger(HomeController.class);
 	
 	@RequestMapping({"/", "/index.html"})
-    String index() {
+    public String index() {
 		if(log.isInfoEnabled()) {
 			log.info("HomeController index() invoked");
 		}

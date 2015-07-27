@@ -62,8 +62,8 @@
 	  	<dependency>
 	  		<groupId>com.connect-group</groupId>
 	  		<artifactId>thymeleaf-tdd</artifactId>
-	  		<version>1.0.1-SNAPSHOT</version>
-	  		<scope>test</scope>
+			<version>1.0.4</version>
+ 	  		<scope>test</scope>
 	  	</dependency>
   	
 	</dependencies>

@@ -1,0 +1,4 @@
+ul.car-makes {
+	th-if: "*{carMakes?.size() > 0}";
+	th-remove: "all-but-first";
+}
