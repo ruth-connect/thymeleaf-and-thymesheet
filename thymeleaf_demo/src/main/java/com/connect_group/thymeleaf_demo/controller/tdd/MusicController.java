@@ -67,7 +67,7 @@ public class MusicController {
 		Album theMemoryOfTrees = new Album();
 		theMemoryOfTrees.setName("The Memory of Trees");
 		theMemoryOfTrees.setDescription("<i>The Memory of Trees</i> is a 1995 studio album by Irish musician Enya. The album sold more than 9 million copies and, in 1997, won the Grammy Award for Best New Age Album.");
-		theMemoryOfTrees.setImage("/music-images/enya/the-celts.jpg");
+		theMemoryOfTrees.setImage("/music-images/enya/the-memory-of-trees.jpg");
 		theMemoryOfTrees.setCdAvailable(true);
 		theMemoryOfTrees.setDownloadAvailable(true);
 		albums.add(theMemoryOfTrees);
