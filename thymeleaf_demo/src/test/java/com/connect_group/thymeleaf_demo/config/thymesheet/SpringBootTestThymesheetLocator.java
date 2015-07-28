@@ -72,6 +72,7 @@ public class SpringBootTestThymesheetLocator extends HtmlThymesheetLocator imple
 		String folderPath = getFolderPath(documentPath);
 		
 		if (log.isInfoEnabled()) {
+			log.info("getThymesheetPaths - document path is: " + documentPath);
 			log.info("getThymesheetPaths - folder path is: " + folderPath);
 		}
 		
@@ -109,7 +110,7 @@ public class SpringBootTestThymesheetLocator extends HtmlThymesheetLocator imple
 	}
 	
 	private String getFolderPath(String documentPath) {
-		int last = documentPath.lastIndexOf(File.separatorChar);
+		int last = documentPath.lastIndexOf("/");
 		if (last >= 0 && last != documentPath.length() - 1) {
 			return documentPath.substring(0, last);
 		}

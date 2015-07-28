@@ -253,7 +253,7 @@
 				<h1>TDD Example - Music</h1>
 				<ul class="incremental">
 					<li>Here's one for you to do! This time, it's a list of music artists, where each artist has a nested list of albums,
-					and it's a bit more complicated!</li>
+					and it's quite a bit more complicated!</li>
 					<li>Remember to use the TDD process:</li>
 					<li>1. Write the simplest possible test</li>
 					<li>2. Run all your tests - the new test should fail</li>
@@ -261,6 +261,53 @@
 					<li>4. Re-run all your tests - which should now all pass</li>
 					<li>5. Repeat until you have completed all your data mappings</li>
 					<li><a href="/tdd/music.html" target="_blank">Click here</a> to view the output of the web page</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Example - Music - Artist Tabs</h1>
+				<ul class="incremental">
+					<li>1. Remove all but the first &lt;li&gt; element for the tabs at the top of the page.</li>
+					<li>2. Iterate over each artist to output a tab for each artist, e.g. <b>data-th-each="artist,artistStatus: *{artists}"</b></li>
+					<li>3. Only the first tab should have the active class set on it, e.g. <b>data-th-class="'tab-title' + (${artistStatus.first} ? ' active' : '')"</b></li>
+					<li>4. Set the href for each tab, e.g. <b>data-th-href="'#artist' + ${artistStatus.count}"</b></li>
+					<li>5. Set the artist name for each tab.</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Example - Music - Artist Tab Content</h1>
+				<ul class="incremental">
+					<li>1. Remove all but the first <b>&lt;div class="artist"&gt;</b> element for the tabs at the top of the page.</li>
+					<li>2. Iterate over each artist to output tab content for each artist, e.g. <b>data-th-each="artist,artistStatus: *{artists}"</b></li>
+					<li>3. Only the first artist should have the active class set on it, e.g. <b>data-th-class="'artist content' + (${artistStatus.first} ? ' active' : '')"</b></li>
+					<li>4. Set the id for each artist, e.g. <b>data-th-id="'artist' + ${artistStatus.count}"</b></li>
+					<li>5. Set the src attribute for the artist image.</li>
+					<li>6. Set the name and bio for the artist. Be aware that the bio can contain HTML, so should be unescaped.</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Example - Music - Albums Accordion</h1>
+				<ul class="incremental">
+					<li>1. Remove all but the first <b>&lt;li class="album"&gt;</b> element for the accordion of albums.</li>
+					<li>2. Iterate over each album to output the accordion entry for each album, e.g. <b>data-th-each="album,albumStatus: ${artist.albums}"</b></li>
+					<li>3. Set the href for the accordion entry, e.g. <b>data-th-href="'#artist' + ${artistStatus.count} + '-album' + ${albumStatus.count}"</b></li>
+					<li>4. Set the name of the album in the accordion entry.</li>
+					<li>5. Set the id for each album, e.g. <b>data-th-id="'artist' + ${artistStatus.count} + '-album' + ${albumStatus.count}"</b></li>
+					<li>6. Only the first album div should have the active class set on it, e.g. <b>data-th-class="'content' + (${albumStatus.first} ? ' active' : '')"</b></li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>TDD Example - Music - Album Content</h1>
+				<ul class="incremental">
+					<li>1. Set the src attribute for the album image.</li>
+					<li>2. Set the name for the album.</li>
+					<li>3. Set the description for the album. Be aware that the description can contain HTML, so should be unescaped.</li>
+					<li>4. Only show the CD image if the CD is available.</li>
+					<li>5. Only show the vinyl record image if the vinyl is available.</li>
+					<li>6. Only show the donwnload image if the download is available.</li>
 				</ul>
 			</div>
 			

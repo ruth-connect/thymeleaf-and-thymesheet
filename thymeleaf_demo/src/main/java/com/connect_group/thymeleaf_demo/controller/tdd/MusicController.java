@@ -136,7 +136,7 @@ public class MusicController {
 		List<Album> albums = new ArrayList<>();
 		
 		Album tubularBells = new Album();
-		tubularBells.setName("TubularBells");
+		tubularBells.setName("Tubular Bells");
 		tubularBells.setDescription("<i>Tubular Bells</i> is the debut record album of English musician Mike Oldfield, recorded when he was 19 and released in 1973.");
 		tubularBells.setImage("/music-images/mike-oldfield/tubular-bells.jpg");
 		tubularBells.setCdAvailable(true);
@@ -170,7 +170,7 @@ public class MusicController {
 		Album tresLunas = new Album();
 		tresLunas.setName("Tr3s Lunas");
 		tresLunas.setDescription("Tr3s Lunas is a record album written and mostly performed by Mike Oldfield. It was released in 2002 with a bonus CD containing a demo program for a PC game, Tres Lunas. When translated from the Spanish language to English, the album name Tres Lunas is Three Moons. This is reflected in the typeface on the album cover, with the letter 'e' being replaced with a numeric '3'.");
-		tresLunas.setDescription("/music-images/mike-oldfield/tres-lunas.jpg");
+		tresLunas.setImage("/music-images/mike-oldfield/tres-lunas.jpg");
 		tresLunas.setCdAvailable(true);
 		albums.add(tresLunas);
 		
