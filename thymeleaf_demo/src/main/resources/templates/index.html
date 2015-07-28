@@ -110,6 +110,80 @@
 			</div>
 			
 			<div class="slide">
+				<h1>Why are Thymeleaf &amp; Thymesheet so cool?</h1>
+				<ul class="incremental">
+					<li>Both let you dynamically map data from your application into an HTML template</li>
+					<li>But without changing the look and feel of the original HTML</li>
+					<li>So your designers/front-end developers can continue to work on the HTML off-line</li>
+					<li>They don't need to know anything about Java or JSP or whatever</li>
+					<li>Nor do they have to fire up the Java application to view the web page</li>
+					<li>With Thymeleaf, data bindings are in the HTML, using HTML5 data attributes</li>
+					<li>Thymesheet goes one better - all the data bindings are done in a separate .tss file, so the original HTML doesn't
+					need to be modified at all</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Replacing text content</h1>
+				<ul class="incremental">
+					<li><b>th-text</b> - replaces the content within an element with <b>escaped</b> text</li>
+					<li><b>th-utext</b> - replaces the content within an element with <b>unescaped</b> text - e.g. HTML content
+					retrieved from a CMS</li>
+					<li><a href="/examples/replacingTextContent.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Adding/updating/removing attributes</h1>
+				<ul class="incremental">
+					<li><b>th-attr</b> - adds/updates/removes an attribute on a given element</li>
+					<li>e.g. data-th-attr="data-example='some test text'" will add an attribute, data-example="some test text" to an element,
+					or replace the contents of an existing data-example attribute with "some test text"</li>
+					<li>To remove an attribute, set the text to an empty string, e.g. data-th-attr="data-example=''" will remove
+					an existing data-example attribute from an element</li>
+					<li>If working with attributes that are part of the HTML spec, e.g. src, class, style, etc, it's best to use the
+					corresponding Thymeleaf attribute for this, e.g. data-th-class="'my-css-class'" will set an element's CSS class to "my-css-class"</li>
+					<li><a href="/examples/addingUpdatingRemovingAttributes.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Conditionally outputting an element</h1>
+				<ul class="incremental">
+					<li><b>th-if</b> - outputs an element (and its children) only if a Boolean condition is true</li>
+					<li>e.g. <b>data-th-if="true"</b> will always output the element</li>
+					<li>e.g. <b>data-th-if="false"</b> will never output the element</li>
+					<li><a href="/examples/conditionallyOutputtingAnElement.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Removing elements</h1>
+				<ul class="incremental">
+					<li><b>th-remove</b> - removes elements depending on the value of the attribute</li>
+					<li><b>data-th-remove="all"</b> - remove both the containing tag and all its children</li>
+					<li><b>data-th-remove="body"</b> - do not remove the containing tag, but remove all its children</li>
+					<li><b>data-th-remove="tag"</b> - remove the containing tag, but do not remove its children</li>
+					<li><b>data-th-remove="all-but-first"</b> - remove all the children of the containing tag except the first one</li>
+					<li><b>data-th-remove="none"</b> - do nothing (this value is useful for dynamic evaluation)</li>
+					<li><a href="/examples/removingElements.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Iterating through a list</h1>
+				<ul class="incremental">
+					<li><b>th-each</b> - iterates through a list repeating the selected element</li>
+					<li>e.g. data-th-each="myListEntry: *{myList}" will iterate through every item in myList</li>
+					<li>You can then refer to, e.g. <b>${myListEntry}</b> to access data within the current list entry</li>
+					<li>Note the use of the dollar notation to refer to the current list item</li>
+					<li>Remember to use <b>th-remove</b> to remove any duplicate elements you're not interested in first,
+					so you are only repeating a single element - this is especially important when using Thymesheet</li>
+					<li><a href="/examples/iteratingThroughAList.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
 				<h1>Testing your mappings using TDD</h1>
 				<ul class="incremental">
 					<li>One big advantage of Thymeleaf and Thymesheet is that you can test your mappings using TDD</li>
@@ -162,11 +236,32 @@
 			</div>
 			
 			<div class="slide">
-				<h1>TDD Demo - Thymeleaf</h1>
+				<h1>TDD Example - Cars</h1>
+				<ul class="incremental">
+					<li>Here's one I prepared earlier! It's a list of car makes, where each car make has a nested list of car models</li>
+					<li>The example HTML has models for Ford, Tesla and Volkswagen</li>
+					<li>The controller is returning models for Jaguar and Land Rover</li>
+					<li>All JUnit tests have got the <b>@Ignore</b> annotation so they don't run</li>
+					<li>All Thymesheet expressions have been commented out</li>
+					<li>We will uncomment each test one by one, watch it fail, and then uncomment the corresponding line of TSS,
+					re-run and watch the test pass</li>
+					<li><a href="/tdd/cars.html" target="_blank">Click here</a> to view the output of the web page</li>
+				</ul>
 			</div>
 			
 			<div class="slide">
-				<h1>TDD Demo - Thymesheet</h1>
+				<h1>TDD Example - Music</h1>
+				<ul class="incremental">
+					<li>Here's one for you to do! This time, it's a list of music artists, where each artist has a nested list of albums,
+					and it's a bit more complicated!</li>
+					<li>Remember to use the TDD process:</li>
+					<li>1. Write the simplest possible test</li>
+					<li>2. Run all your tests - the new test should fail</li>
+					<li>3. Write a single Thymeleaf or Thymesheet expression</li>
+					<li>4. Re-run all your tests - which should now all pass</li>
+					<li>5. Repeat until you have completed all your data mappings</li>
+					<li><a href="/tdd/music.html" target="_blank">Click here</a> to view the output of the web page</li>
+				</ul>
 			</div>
 			
 			<div class="slide">

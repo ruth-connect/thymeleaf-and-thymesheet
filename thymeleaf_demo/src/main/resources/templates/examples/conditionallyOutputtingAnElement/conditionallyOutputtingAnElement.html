@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Conditionally Outputting An Element</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<style>
+			.red-and-italic {
+				color: red;
+				font-style: italic;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Conditionally Outputting An Element</h1>
+		<h2>If True, I want to see Mickey Mouse</h2>
+		<h2>If False, I want to see Donald Duck</h2>
+		<h2>This time round, we are <span style="color: red;" data-th-text="*{myRandomness ? 'True' : 'False'}"></span></h2>
+		<img id="mickey" src="/test-images/mickey-mouse.png"/>
+		<img id="donald" src="/test-images/donald-duck.gif"/>
+	</body>
+</html>

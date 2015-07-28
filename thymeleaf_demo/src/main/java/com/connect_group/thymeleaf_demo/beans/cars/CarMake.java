@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.beans;
+package com.connect_group.thymeleaf_demo.beans.cars;
 
 import java.io.Serializable;
 import java.util.List;

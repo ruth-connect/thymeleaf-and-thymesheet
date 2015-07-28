@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.controller.thymesheet;
+package com.connect_group.thymeleaf_demo.controller.tdd;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,17 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.connect_group.thymeleaf_demo.beans.CarMake;
-import com.connect_group.thymeleaf_demo.beans.CarModel;
+import com.connect_group.thymeleaf_demo.beans.cars.CarMake;
+import com.connect_group.thymeleaf_demo.beans.cars.CarModel;
 
 @Controller
-public class ThymesheetTDDTestController {
+public class CarsController {
 
-	@RequestMapping({"/thymesheet/tddTest.html"})
-    public ModelAndView index() {
+	@RequestMapping({"/tdd/cars.html"})
+    public ModelAndView cars() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getCarMakes());
-        return new ModelAndView("thymesheet/tddTest", model);
+        return new ModelAndView("tdd/cars/cars", model);
     }
 	
 	private List<CarMake> getCarMakes() {

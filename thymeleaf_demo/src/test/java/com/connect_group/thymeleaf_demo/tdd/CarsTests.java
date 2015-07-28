@@ -1,4 +1,4 @@
-package com.connect_group.thymeleaf_demo.thymesheet;
+package com.connect_group.thymeleaf_demo.tdd;
 
 import static com.connect_group.thymeleaf.testing.hamcrest.ThymeleafMatchers.exists;
 import static com.connect_group.thymeleaf.testing.hamcrest.ThymeleafMatchers.hasOnlyText;
@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,17 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.connect_group.thymeleaf.testing.ThymeleafTestEngine;
-import com.connect_group.thymeleaf_demo.beans.CarMake;
-import com.connect_group.thymeleaf_demo.beans.CarModel;
+import com.connect_group.thymeleaf_demo.beans.cars.CarMake;
+import com.connect_group.thymeleaf_demo.beans.cars.CarModel;
 import com.connect_group.thymeleaf_demo.config.SpringBootTestThymesheetContext;
 import com.connect_group.thymesheet.css.selectors.NodeSelectorException;
 import com.connect_group.thymesheet.query.HtmlElements;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringBootTestThymesheetContext.class)
-public class TDDTest {
+public class CarsTests {
 	
-	private static final String HTML_PATH = "thymesheet/tddTest.html";
+	private static final String HTML_PATH = "tdd/cars/cars.html";
 
 	@Autowired
 	private ThymeleafTestEngine selectorEngine;
@@ -42,6 +43,7 @@ public class TDDTest {
 	}
 
 	@Test
+	@Ignore
 	public void shouldNotOutputUlTagForCarMakes_WhenListOfCarMakesIsEmpty() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", new ArrayList<CarMake>());
@@ -50,6 +52,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputUlTagForCarMakes_WhenListOfCarMakesContainsOneCarMake() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithNoModels());
@@ -58,6 +61,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputOneLiTagForCarMakes_WhenListOfCarMakesContainsOneCarMake() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithNoModels());
@@ -66,6 +70,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputTwoLiTagsForCarMakes_WhenListOfCarMakesContainsTwoCarMakes() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getTwoCarMakesWithNoModels());
@@ -74,6 +79,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputCarMakeName_WhenCarMakeNameIsSet() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithNoModels());
@@ -82,6 +88,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputNoUlTagForCarModels_WhenListOfCarModelsIsEmpty() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithNoModels());
@@ -90,6 +97,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputUlTagForCarModels_WhenListOfCarModelsContainsOneCarModel() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithOneModel());
@@ -98,6 +106,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputOneCarModel_WhenListOfCarModelsContainsOneCarModel() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithOneModel());
@@ -106,6 +115,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputTwoCarModels_WhenListOfCarModelsContainsTwoCarModels() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithTwoModels());
@@ -114,6 +124,7 @@ public class TDDTest {
 	}
 	
 	@Test
+	@Ignore
 	public void shouldOutputCarModelName_WhenCarModelNameIsSet() throws NodeSelectorException {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("carMakes", getOneCarMakeWithOneModel());
