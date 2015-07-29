@@ -1,5 +1,4 @@
-# thymeleaf-and-thymesheet
-Thymeleaf and Thymesheet
+# Thymeleaf and Thymesheet
 
 This is a working example of how to use the Java templating engines Thymeleaf and Thymesheet within a Spring Boot application.
 
