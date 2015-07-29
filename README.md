@@ -10,8 +10,11 @@ SETUP INSTRUCTIONS:
 (2) If you are using an IDE, e.g. Eclipse, STS, or IntelliJ IDEA, start the webapp within your IDE
 
 (3) If you are NOT using an IDE, then you will need do the following steps to start the webapp:
+
 (a) Change directory: cd thymeleaf-and-thymesheet/thymeleaf_demo
+
 (b) Run the Maven build: mvn install
+
 (c) Start the application: java -jar target/thymeleaf_demo-0.0.1-SNAPSHOT.jar
 
 (4) Go to http://localhost:8080/ to view the demo
