@@ -40,6 +40,22 @@
 			</div>
 			
 			<div class="slide">
+				<h1>Setting up the demo</h1>
+				<ul>
+					<li>Clone the Git repository: <b>git clone https://github.com/agilestaffordshire/thymeleaf-and-thymesheet.git</b></li>
+					<li>If you are using an IDE, e.g. Eclipse, STS, or IntelliJ IDEA, start the webapp within your IDE</li>
+					<li>If you are <b>NOT</b> using an IDE, then you will need do the following steps to start the webapp:
+						<ul>
+							<li>Change directory: <b>cd thymeleaf-and-thymesheet/thymeleaf_demo</b></li>
+							<li>Run the Maven build: <b>mvn install</b></li>
+							<li>Start the application: <b>java -jar target/thymeleaf_demo-0.0.1-SNAPSHOT.jar</b>
+						</li>
+					</ul>
+					<li>Go to <b>http://localhost:8080/</b> to view the demo</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
 				<h1>What is Thymeleaf?</h1>
 				<ul class="incremental">
 					<li>Java-based and Open Source</li>
@@ -154,6 +170,18 @@
 					<li>e.g. <b>data-th-if="true"</b> will always output the element</li>
 					<li>e.g. <b>data-th-if="false"</b> will never output the element</li>
 					<li><a href="/examples/conditionallyOutputtingAnElement.html" target="_blank">Click here</a> for an example</li>
+				</ul>
+			</div>
+			
+			<div class="slide">
+				<h1>Switching between cases</h1>
+				<ul class="incremental">
+					<li><b>th-switch</b> - add this to an element that you want to switch between the child elements of</li>
+					<li>e.g. adding <b>data-th-switch="*{myValueToSwitchOn}"</b> to an element will let you switch between its children.</li>
+					<li><b>th-case</b> - add this to a child element that you want to be one of the switch cases</li>
+					<li>e.g. adding <b>data-th-case="'expected-value'"</b> to a child element will output that element only if myValueToSwitchOn is equal to "expected-value".</li>
+					<li>For the default case (where myValueToSwitchOn does not match any other case), use: <b>data-th-case="*"</b></li>
+					<li><a href="/examples/switchingBetweenCases.html" target="_blank">Click here</a> for an example</li>
 				</ul>
 			</div>
 			

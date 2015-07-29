@@ -1,9 +1,6 @@
 package com.connect_group.thymeleaf_demo.config.thymesheet;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +18,7 @@ public class SpringBootThymesheetLocator extends HtmlThymesheetLocator implement
 	private static final Logger log = Logger.getLogger(SpringBootThymesheetLocator.class);
 
 	private ServletContext servletContext;
-	private static final String PATH_PREFIX = "templates/";
+	private static final String PATH_PREFIX = "/templates/";
 	private static final String DEFAULT_SUFFIX = ".tss";
 	
 	private final Set<String> thymesheetSuffixes = new HashSet<String>();
@@ -77,52 +74,17 @@ public class SpringBootThymesheetLocator extends HtmlThymesheetLocator implement
 	}
 	
 	private List<String> getThymesheetPaths(String documentPath) {
-		String folderPath = getFolderPath(documentPath);
-		
-		if (log.isInfoEnabled()) {
-			log.info("getThymesheetPaths - document path is: " + documentPath);
-			log.info("getThymesheetPaths - folder path is: " + folderPath);
-		}
-		
-		HashSet<String> folderContents = new HashSet<String>();
-		try {
-			URL url = servletContext.getClass().getClassLoader().getResource(PATH_PREFIX + folderPath);
-			String[] files = new File(url.toURI()).list();
-			folderContents.addAll(Arrays.asList(files));
-		} catch (Exception ex) {
-			log.error("Exception while reading folder contents", ex);
-		}
-		return filterThymesheetPaths(folderPath, folderContents);
-	}
-	
-	private List<String> filterThymesheetPaths(String folderPath, Set<String> folderContents) {
-		List<String> thymesheetPaths = new ArrayList<String>();
-		
-		if (log.isInfoEnabled()) {
-			log.info("filterThymesheetPaths called");
-		}
-		
-		if (folderContents != null) {
-			
-			for (String filePath : folderContents) {
-				
-				if (log.isInfoEnabled()) {
-					log.info("File path: " + filePath);
-				}
-				
-				if (isPathWithThymesheetSuffix(filePath)) {
-					thymesheetPaths.add("classpath:/" + PATH_PREFIX + folderPath + "/" + filePath);
-				}
+		String thymesheetPath = PATH_PREFIX + documentPath + ".tss";
+		if (servletContext.getClassLoader().getClass().getResourceAsStream(thymesheetPath) != null) {
+			if (log.isInfoEnabled()) {
+				log.info("Found Thymesheet file:" + thymesheetPath);
 			}
+			return Collections.singletonList("classpath:" + thymesheetPath);
+		} else {
+			if (log.isInfoEnabled()) {
+				log.info("Thymesheet file not present: " + thymesheetPath);
+			}
+			return Collections.emptyList();
 		}
-		return thymesheetPaths;
-	}
-	
-	private String getFolderPath(String documentPath) {
-		int last = documentPath.lastIndexOf("/");
-		if (last >= 0 && last != documentPath.length() - 1) {
-			return documentPath.substring(0, last);
-		}
-		return "";
 	}
 }
