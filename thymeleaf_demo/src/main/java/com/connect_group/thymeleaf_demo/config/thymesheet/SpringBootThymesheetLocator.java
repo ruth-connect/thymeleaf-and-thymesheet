@@ -77,7 +77,7 @@ public class SpringBootThymesheetLocator extends HtmlThymesheetLocator implement
 		String thymesheetPath = PATH_PREFIX + documentPath + ".tss";
 		if (servletContext.getClassLoader().getClass().getResourceAsStream(thymesheetPath) != null) {
 			if (log.isInfoEnabled()) {
-				log.info("Found Thymesheet file:" + thymesheetPath);
+				log.info("Found Thymesheet file: " + thymesheetPath);
 			}
 			return Collections.singletonList("classpath:" + thymesheetPath);
 		} else {
